@@ -8,7 +8,7 @@ import com.selfstudy.springtheory.member.MemberServiceImpl;
 public class MemberApp {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+
 		
 		AppConfig app = new AppConfig();
 		
@@ -22,7 +22,7 @@ public class MemberApp {
 		System.out.println("Member name = " + member.getName());
 		System.out.println("find Member name = " + findMember.getName());
 		
-		
+		// 인텔리제이 설치 완료 커밋되는지 체크
 	}
 
 }
