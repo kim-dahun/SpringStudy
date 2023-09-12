@@ -3,17 +3,23 @@ package com.selfstudy.springtheory;
 import com.selfstudy.springtheory.member.Grade;
 import com.selfstudy.springtheory.member.Member;
 import com.selfstudy.springtheory.member.MemberService;
-import com.selfstudy.springtheory.member.MemberServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class MemberApp {
 
 	public static void main(String[] args) {
 
 		
-		AppConfig app = new AppConfig();
+//		AppConfig app = new AppConfig();
 		
-		MemberService memberService = app.memberService();
-		
+//		MemberService memberService = app.memberService();
+
+		// 컨테이너에 집어 넣은 Bean 들을 모두 관리하도록
+		ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+
+		MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
+
 		Member member = new Member(1L,"memberA",Grade.VIP);
 		
 		memberService.join(member);
