@@ -2,7 +2,9 @@ package com.selfstudy.springtheory.discount;
 
 import com.selfstudy.springtheory.member.Grade;
 import com.selfstudy.springtheory.member.Member;
+import org.springframework.stereotype.Component;
 
+@Component
 public class RateDiscountPolicy implements DiscountPolicy {
 	
 	private int discountPercent = 10;

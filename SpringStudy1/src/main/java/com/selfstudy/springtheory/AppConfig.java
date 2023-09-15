@@ -1,14 +1,12 @@
 package com.selfstudy.springtheory;
 
 import com.selfstudy.springtheory.discount.DiscountPolicy;
-//import com.selfstudy.springtheory.discount.FixDiscountPolicy;
 import com.selfstudy.springtheory.discount.RateDiscountPolicy;
 import com.selfstudy.springtheory.member.MemberRepository;
 import com.selfstudy.springtheory.member.MemberService;
 import com.selfstudy.springtheory.member.MemberServiceImpl;
 import com.selfstudy.springtheory.member.MemoryMemberRepository;
 import com.selfstudy.springtheory.order.OrderService;
-import com.selfstudy.springtheory.order.OrderServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -37,8 +35,8 @@ public class AppConfig {
 	@Bean
 	public OrderService orderService() {
 		System.out.println("Call AppConfig.orderService");
-		return new OrderServiceImpl(memberRepository(), discountPolicy());
-		
+//		return new OrderServiceImpl(memberRepository(), discountPolicy());
+		return null;
 	}
 
 	// Bean 어노테이션 사용 시 스프링 컨테이너에 모두 등록됨.
