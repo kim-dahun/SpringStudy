@@ -1,5 +1,8 @@
 package com.selfstudy.springtheory.member;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Member {
 	
 	private Long id;

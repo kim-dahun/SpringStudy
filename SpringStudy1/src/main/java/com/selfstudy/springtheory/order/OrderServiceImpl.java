@@ -1,13 +1,14 @@
 package com.selfstudy.springtheory.order;
 
+import com.selfstudy.springtheory.annotation.mainDiscountPolicy;
 import com.selfstudy.springtheory.discount.DiscountPolicy;
 import com.selfstudy.springtheory.member.Member;
 import com.selfstudy.springtheory.member.MemberRepository;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
 
@@ -20,12 +21,12 @@ public class OrderServiceImpl implements OrderService {
 
 
 
-//	@Autowired
-//	public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-//
-//		this.memberRepository = memberRepository;
-//		this.discountPolicy = discountPolicy;
-//	}
+	@Autowired
+	public OrderServiceImpl(MemberRepository memberRepository, @mainDiscountPolicy DiscountPolicy discountPolicy) {
+
+		this.memberRepository = memberRepository;
+		this.discountPolicy = discountPolicy;
+	}
 
 //	@Autowired // 일반 메서드 주입
 //	public void init(MemberRepository memberRepository, DiscountPolicy discountPolicy){
