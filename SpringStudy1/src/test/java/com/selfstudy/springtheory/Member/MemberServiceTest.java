@@ -1,25 +1,25 @@
 package com.selfstudy.springtheory.Member;
 
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import com.selfstudy.springtheory.AppConfig;
 import com.selfstudy.springtheory.member.Grade;
 import com.selfstudy.springtheory.member.Member;
 import com.selfstudy.springtheory.member.MemberService;
-import com.selfstudy.springtheory.member.MemberServiceImpl;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class MemberServiceTest {
 
 	
-	
+
 	MemberService memberService;
+
+
 	@BeforeEach
 	public void beforeEach() {
 		
 		AppConfig app = new AppConfig();
-		MemberService memberService = app.memberService();
+		this.memberService = app.memberService();
 	}
 			
 	@Test

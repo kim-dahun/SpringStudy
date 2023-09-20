@@ -2,7 +2,9 @@ package com.selfstudy.springtheory.discount;
 
 import com.selfstudy.springtheory.member.Grade;
 import com.selfstudy.springtheory.member.Member;
+import org.springframework.beans.factory.annotation.Qualifier;
 
+@Qualifier("fixDiscountPolicy")
 public class FixDiscountPolicy implements DiscountPolicy {
 
 	private int discountFixAmount = 1000;
