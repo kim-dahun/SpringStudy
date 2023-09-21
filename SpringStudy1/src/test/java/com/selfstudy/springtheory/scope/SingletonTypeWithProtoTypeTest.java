@@ -2,8 +2,10 @@ package com.selfstudy.springtheory.scope;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+import jakarta.inject.Provider;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -30,7 +32,7 @@ public class SingletonTypeWithProtoTypeTest {
     @Test
     void singletonClientUserPrototype(){
 
-        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(ClientBean.class,Prototypebean.class);
+        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(ClientBean.class, Prototypebean.class);
 
 
         ClientBean clientBean1 = ac.getBean(ClientBean.class);
@@ -40,24 +42,24 @@ public class SingletonTypeWithProtoTypeTest {
 
         ClientBean clientBean2 = ac.getBean(ClientBean.class);
         int count2 = clientBean2.logic();
-        Assertions.assertThat(count2).isEqualTo(2);
+        Assertions.assertThat(count2).isEqualTo(1);
 
 
     }
 
 
+//    @Component
     @Scope("singleton")
     static class ClientBean {
 
-        private final Prototypebean prototypebean;
 
 
-        public ClientBean(Prototypebean prototypebean){
-            this.prototypebean = prototypebean;
-        }
-
+        @Autowired
+        private Provider<Prototypebean> provider;
+//        private ObjectProvider<Prototypebean> provider; // 스프링에 의존하는 Provider, DL(의존성 탐색) 역할 수행
 
         public int logic(){
+            Prototypebean prototypebean = provider.get();
             prototypebean.addCount();
             int count = prototypebean.getCount();
 
